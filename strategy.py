@@ -334,7 +334,8 @@ def monitor_trade(main_info, hedge_info, daily_target):
                 current_value = (main_ltp * QUANTITY) + (hedge_ltp * QUANTITY)
                 pnl           = current_value - entry_value
                 pnl_pct       = (pnl / entry_value) * 100
-                print(f"Main: Rs.{main_ltp} | Hedge: Rs.{hedge_ltp} | Value: Rs.{current_value:.2f} | P&L: Rs.{pnl:.2f} ({pnl_pct:.2f}%)")
+                msg = "Main: Rs." + str(main_ltp) + " | Hedge: Rs." + str(hedge_ltp) + " | Value: Rs." + str(round(current_value,2)) + " | P&L: Rs." + str(round(pnl,2)) + " (" + str(round(pnl_pct,2)) + "%)"
+                print(msg)
 
                 # 5% profit hit
                 if current_value >= target_value:
