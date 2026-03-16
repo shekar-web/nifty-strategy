@@ -22,5 +22,5 @@ jobs:
       - name: Install dependencies
         run: pip install smartapi-python pyotp logzero websocket-client
 
-      - name: Run Update strategy
-        run: python Update strategy.py
+      - name: Run strategy
+        run: python strategy.py
