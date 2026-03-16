@@ -23,4 +23,4 @@ jobs:
         run: pip install smartapi-python pyotp logzero websocket-client
 
       - name: Run strategy
-        run: python strategy.py
+        run: python Update strategy.py
