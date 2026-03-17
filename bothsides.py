@@ -284,7 +284,6 @@ def monitor_and_exit(ce_info, pe_info):
 
 # ── MAIN ─────────────────────────────────────────────────────────
 def run():
-    wait_for_market_open()
 
     token_map              = load_token_map()
     ce_strikes, pe_strikes = get_scan_strikes(token_map)
