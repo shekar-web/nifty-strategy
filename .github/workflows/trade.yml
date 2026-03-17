@@ -23,4 +23,9 @@ jobs:
         run: pip install smartapi-python pyotp logzero websocket-client
 
       - name: Run strategy
+        env:
+          ANGEL_API_KEY: ${{ secrets.ANGEL_API_KEY }}
+          ANGEL_CLIENT_ID: ${{ secrets.ANGEL_CLIENT_ID }}
+          ANGEL_PWD: ${{ secrets.ANGEL_PWD }}
+          ANGEL_TOTP: ${{ secrets.ANGEL_TOTP }}
         run: python strategy.py
