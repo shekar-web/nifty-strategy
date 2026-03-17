@@ -9,10 +9,10 @@ import os
 import threading
 from datetime import datetime
 
-api_key    = os.environ.get('API_KEY', '')
-username   = os.environ.get('CLIENT_ID', '')
-pwd        = os.environ.get('PWD', '')
-TOTP_TOKEN = os.environ.get('TOTP_TOKEN', '')
+api_key    = os.environ.get('ANGEL_API_KEY', '')
+username   = os.environ.get('ANGEL_CLIENT_ID', '')
+pwd        = os.environ.get('ANGEL_PWD', '')
+TOTP_TOKEN = os.environ.get('ANGEL_TOTP', '')
 
 EXCHANGE     = "NFO"
 PRODUCT_TYPE = "CARRYFORWARD"
