@@ -34,6 +34,10 @@ order_results = {}
 smartApi = SmartConnect(api_key)
 
 def login():
+    print("API KEY LENGTH: " + str(len(api_key)))
+    print("CLIENT ID LENGTH: " + str(len(username)))
+    print("PWD LENGTH: " + str(len(pwd)))
+    print("TOTP LENGTH: " + str(len(TOTP_TOKEN)))
     print("Logging in...")
     try:
         totp = pyotp.TOTP(TOTP_TOKEN).now()
