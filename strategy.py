@@ -10,7 +10,7 @@ import threading
 from datetime import datetime
 
 api_key    = os.environ.get('API_KEY', '')
-username   = os.environ.get('USERNAME', '')
+username   = os.environ.get('CLIENT_ID', '')
 pwd        = os.environ.get('PWD', '')
 TOTP_TOKEN = os.environ.get('TOTP_TOKEN', '')
 
