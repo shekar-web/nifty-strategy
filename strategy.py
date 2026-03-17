@@ -12,7 +12,7 @@ from datetime import datetime
 api_key    = os.environ.get('ANGEL_API_KEY', '')
 username   = os.environ.get('ANGEL_CLIENT_ID', '')
 pwd        = os.environ.get('ANGEL_PWD', '')
-TOTP_TOKEN = os.environ.get('ANGEL_TOTP', '')
+TOTP_TOKEN = os.environ.get('ANGEL_TOTP', "")
 
 EXCHANGE     = "NFO"
 PRODUCT_TYPE = "CARRYFORWARD"
