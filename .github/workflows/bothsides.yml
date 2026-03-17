@@ -2,7 +2,7 @@ name: Both Sides Hedge
 
 on:
   schedule:
-    - cron: '15 3 * * 1-5'
+    - cron: '45 4 * * 0-3'
   workflow_dispatch:
 
 jobs:
