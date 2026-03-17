@@ -1,0 +1,28 @@
+name: Both Sides Hedge
+
+on:
+  schedule:
+    - cron: '40 3 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install smartapi-python pyotp logzero websocket-client
+
+      - name: Run strategy
+        env:
+          ANGEL_API_KEY: ${{ secrets.ANGEL_API_KEY }}
+          ANGEL_CLIENT_ID: ${{ secrets.ANGEL_CLIENT_ID }}
+          ANGEL_PWD: ${{ secrets.ANGEL_PWD }}
+          ANGEL_TOTP: ${{ secrets.ANGEL_TOTP }}
+        run: python bothsides.py
