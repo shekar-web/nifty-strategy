@@ -54,7 +54,7 @@ login()
 
 def wait_for_market_open():
     now = datetime.now()
-    market_open = now.replace(hour=9, minute=15, second=0, microsecond=0)
+    market_open = now.replace(hour=3, minute=45, second=0, microsecond=0)
     if now >= market_open:
         print("Market already open.")
         return
