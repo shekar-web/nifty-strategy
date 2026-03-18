@@ -296,7 +296,7 @@ def run():
     global daily_pnl
     wait_for_market_open()
     expiry, token_map = load_token_map()
-    market_close = datetime.now().replace(hour=15, minute=30, second=0)
+    market_close = datetime.now().replace(hour=10, minute=0, second=0)
     initial_entry = (MAIN_MAX * QUANTITY) + (HEDGE_MAX * QUANTITY)
     daily_target = initial_entry * (DAILY_PROFIT_PCT / 100)
     print("Daily target: Rs." + str(round(daily_target, 2)))
