@@ -20,7 +20,7 @@ EXPIRY       = "24MAR2026"
 EXCHANGE     = "NFO"
 PRODUCT_TYPE = "CARRYFORWARD"
 QUANTITY     = 65
-PROFIT_PCT   = 3.0
+PROFIT_PCT   = 6.0
 POLL_SEC     = 0.2
 
 CE_START    = 26150
@@ -29,7 +29,7 @@ SCAN_STEPS  = 100
 STEP        = 50
 
 PREMIUM_MIN = 3.80
-PREMIUM_MAX = 10.90
+PREMIUM_MAX = 4.90
 
 CACHE_FILE  = "nifty_cache_" + EXPIRY + ".json"
 today       = datetime.now()
