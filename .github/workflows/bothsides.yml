@@ -23,4 +23,4 @@ jobs:
           ANGEL_CLIENT_ID: ${{ secrets.ANGEL_CLIENT_ID }}
           ANGEL_PWD: ${{ secrets.ANGEL_PWD }}
           ANGEL_TOTP: ${{ secrets.ANGEL_TOTP }}
-        run: python bothsides.py
+        run: python bothsides_github.py
