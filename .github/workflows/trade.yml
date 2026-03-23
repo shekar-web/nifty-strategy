@@ -1,8 +1,6 @@
 name: Nifty Hedge Trade
 
 on:
-  schedule:
-    - cron: '15 3 * * 1-5'
   workflow_dispatch:
 
 jobs:
