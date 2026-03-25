@@ -303,9 +303,6 @@ def run():
     market_close = datetime.now().replace(hour=15, minute=30, second=0)
 
     while not pair:
-        if datetime.now() >= market_close:
-            print("Market closed. No pair found today.")
-            return
         pair = find_pair(ce_strikes, pe_strikes)
         if not pair:
             time.sleep(0.2)
