@@ -60,7 +60,7 @@ def wait_for_market_open():
     now = datetime.now()
 
     # Set market open time for today
-    market_open = now.replace(hour=9, minute=16, second=0, microsecond=0)
+    market_open = now.replace(hour=3, minute=15, second=0, microsecond=0)
 
     # If market open time already passed today set for tomorrow
     if now >= market_open:
