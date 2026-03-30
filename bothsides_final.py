@@ -208,6 +208,9 @@ def place_both_orders(pair, side="BUY"):
     t2.join()
     for log in order_log:
         print(log)
+    ce_id = order_results.get(pair["ce_symbol"])
+    pe_id = order_results.get(pair["pe_symbol"])
+    return ce_id, pe_id
 
 
 # ── STEP 7: Monitor and Exit ──────────────────────────────────────
@@ -285,21 +288,23 @@ def run():
         " | Diff: Rs." + str(pair["diff"])
     )
 
-    place_both_orders(pair, side="BUY")
+    ce_id, pe_id = place_both_orders(pair, side="BUY")
 
-    if not order_results.get(pair["ce_symbol"]) or not order_results.get(pair["pe_symbol"]):
+    if not ce_id or not pe_id:
         print("One or both orders failed.")
         return
 
     time.sleep(3)
-    filled    = bulk_ltp([
-        {"symbol": pair["ce_symbol"], "token": pair["ce_token"]},
-        {"symbol": pair["pe_symbol"], "token": pair["pe_token"]}
-    ])
-    prices    = {s["token"]: s["price"] for s in filled}
-    ce_actual = prices.get(pair["ce_token"], pair["ce_price"])
-    pe_actual = prices.get(pair["pe_token"], pair["pe_price"])
-    print("Actual fills — CE: Rs." + str(ce_actual) + " | PE: Rs." + str(pe_actual))
+    try:
+        ce_order = smartApi.individual_order_details(ce_id)
+        pe_order = smartApi.individual_order_details(pe_id)
+        ce_actual = float(ce_order["data"]["averageprice"])
+        pe_actual = float(pe_order["data"]["averageprice"])
+        print("Actual fills — CE: Rs." + str(ce_actual) + " | PE: Rs." + str(pe_actual))
+    except:
+        ce_actual = pair["ce_price"]
+        pe_actual = pair["pe_price"]
+        print("Could not fetch fills, using scanned prices")
 
     ce_info = {"symbol": pair["ce_symbol"], "token": pair["ce_token"], "price": ce_actual}
     pe_info = {"symbol": pair["pe_symbol"], "token": pair["pe_token"], "price": pe_actual}
