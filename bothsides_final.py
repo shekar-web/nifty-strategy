@@ -294,17 +294,27 @@ def run():
         print("One or both orders failed.")
         return
 
-    time.sleep(3)
-    try:
-        ce_order = smartApi.individual_order_details(ce_id)
-        pe_order = smartApi.individual_order_details(pe_id)
-        ce_actual = float(ce_order["data"]["averageprice"])
-        pe_actual = float(pe_order["data"]["averageprice"])
-        print("Actual fills — CE: Rs." + str(ce_actual) + " | PE: Rs." + str(pe_actual))
-    except:
-        ce_actual = pair["ce_price"]
-        pe_actual = pair["pe_price"]
-        print("Could not fetch fills, using scanned prices")
+    def wait_for_fills(ce_id, pe_id, timeout=10):
+    start = time.time()
+    while time.time() - start < timeout:
+        try:
+            ce_order = smartApi.individual_order_details(ce_id)
+            pe_order = smartApi.individual_order_details(pe_id)
+            ce_status = ce_order["data"]["status"].upper()
+            pe_status = pe_order["data"]["status"].upper()
+            ce_avg    = float(ce_order["data"]["averageprice"])
+            pe_avg    = float(pe_order["data"]["averageprice"])
+            if ce_status == "COMPLETE" and pe_status == "COMPLETE":
+                if ce_avg > 0 and pe_avg > 0:
+                    print("Both filled! CE: Rs." + str(ce_avg) + " | PE: Rs." + str(pe_avg))
+                    return ce_avg, pe_avg
+        except:
+            pass
+        time.sleep(0.002)
+    print("Timeout waiting for fills. Using scanned price.")
+    return pair["ce_price"], pair["pe_price"]
+
+ce_actual, pe_actual = wait_for_fills(ce_id, pe_id)
 
     ce_info = {"symbol": pair["ce_symbol"], "token": pair["ce_token"], "price": ce_actual}
     pe_info = {"symbol": pair["pe_symbol"], "token": pair["pe_token"], "price": pe_actual}
