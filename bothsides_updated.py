@@ -16,11 +16,11 @@ pwd        = os.environ.get('ANGEL_PWD', '')
 TOTP_TOKEN = os.environ.get('ANGEL_TOTP', '')
 
 # ── CONFIG ───────────────────────────────────────────────────────
-EXPIRY       = "24MAR2026"
+EXPIRY       = "07APR2026"
 EXCHANGE     = "NFO"
 PRODUCT_TYPE = "CARRYFORWARD"
 QUANTITY     = 65
-PROFIT_PCT   = 6.0
+PROFIT_PCT   = 3.0
 POLL_SEC     = 0.2
 
 CE_START    = 26150
@@ -28,7 +28,7 @@ PE_START    = 21450
 SCAN_STEPS  = 100
 STEP        = 50
 
-PREMIUM_MIN = 3.80
+PREMIUM_MIN = 9.10
 PREMIUM_MAX = 10.90
 
 CACHE_FILE  = "nifty_cache_" + EXPIRY + ".json"
