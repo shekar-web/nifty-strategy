@@ -24,7 +24,7 @@ PROFIT_PCT   = 3.0
 POLL_SEC     = 0.2
 
 CE_START    = 26150
-PE_START    = 21450
+PE_START    = 20200
 SCAN_STEPS  = 100
 STEP        = 50
 
