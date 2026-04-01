@@ -16,6 +16,8 @@ jobs:
 
       - name: Install dependencies
         run: pip install smartapi-python pyotp logzero websocket-client
+      - name: Check IP
+        run: curl https://api.ipify.org
 
       - name: Run strategy
         env:
