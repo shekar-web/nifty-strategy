@@ -16,7 +16,7 @@ pwd        = os.environ.get('ANGEL_PWD', '')
 TOTP_TOKEN = os.environ.get('ANGEL_TOTP', '')
 
 # ── CONFIG ───────────────────────────────────────────────────────
-EXPIRY       = "07APR2026"
+EXPIRY       = "13APR2026"
 EXCHANGE     = "NFO"
 PRODUCT_TYPE = "CARRYFORWARD"
 QUANTITY     = 195
